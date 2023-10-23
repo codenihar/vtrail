@@ -42,14 +42,14 @@ let client;
 // Define a route to handle POST requests to /login
 app.post('/login', async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     // Access the database and collection
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
 
-    // Find the user by their username
-    const user = await collection.findOne({ username });
+    // Find the user by their email
+    const user = await collection.findOne({ email });
 
     if (user) {
       // Compare the provided password with the stored hashed password
